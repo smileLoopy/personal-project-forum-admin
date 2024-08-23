@@ -32,7 +32,7 @@ class PostingCommentManagementControllerTest {
         mvc.perform(get("/management/posting-comments"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
-                .andExpect(view().name("management/postingComments"));
+                .andExpect(view().name("management/posting-comments"));
     }
 
 }
