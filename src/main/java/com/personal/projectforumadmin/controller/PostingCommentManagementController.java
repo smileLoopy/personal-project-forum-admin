@@ -1,6 +1,7 @@
 package com.personal.projectforumadmin.controller;
 
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -16,8 +17,11 @@ public class PostingCommentManagementController {
     @GetMapping
     public String postingComments(
             @PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable,
+            HttpServletRequest request,
             Model model
     ) {
-        return "management/postingComments";
+        String requestURI = request.getRequestURI();
+        model.addAttribute("isComments", "/management/posting-comments".equals(requestURI));
+        return "management/posting-comments";
     }
 }
