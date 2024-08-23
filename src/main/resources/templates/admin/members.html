@@ -1,10 +1,67 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
+<head id="layout-head">
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <title>ADMIN USER PAGE</title>
 
+    <link rel="stylesheet" href="/js/plugins/jsgrid/jsgrid.min.css">
+    <link rel="stylesheet" href="/js/plugins/jsgrid/jsgrid-theme.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <header id="layout-header">INSERT HEADER</header>
+    <aside id="layout-left-aside">INSERT LEFT ASIDE</aside>
+
+    <!-- Main content -->
+    <main id="layout-main">
+        <div id="jsgrid-admin-members"></div>
+    </main>
+    <!-- /.content -->
+
+    <aside id="layout-right-aside">INSERT RIGHT ASIDE</aside>
+    <footer id="layout-footer">INSERT FOOTER</footer>
+</div>
+
+<!--/* REQUIRED SCRIPTS */-->
+<script id="layout-scripts">/* INSERT COMMON SCRIPT */</script>
+
+<!--/* PAGE SCRIPT */-->
+<script src="/js/plugins/jsgrid/jsgrid.min.js"></script>
+<script>
+    $(function () {
+        $("#jsgrid-admin-members").jsGrid({
+            height: "100%",
+            width: "100%",
+
+            inserting: true,
+            editing: true,
+            sorting: true,
+            paging: false,
+
+            data: [
+                {
+                    "userId": "uno",
+                    "nickname": "Uno",
+                    "email": "uno@email.com",
+                    "memo": "test memo.",
+                    "roleTypes": "ADMIN",
+                    "createdBy": "Uno",
+                    "createdAt": "2022-01-01 00:00:00"
+                }
+            ],
+
+            fields: [
+                { name: "userId", title: "유저 ID", type: "text", width: 70 },
+                { name: "nickname", title: "닉네임", type: "text", width: 60 },
+                { name: "email", title: "이메일", type: "text", width: 120 },
+                { name: "memo", title: "메모", type: "text", width: 150 },
+                { name: "roleTypes", title: "권한", type: "select", items: [{"name": "ADMIN", "description": "관리자"}], valueField: "name", textField: "description", width: 100 },
+                { name: "createdBy", title: "작성자", type: "text", width: 60 },
+                { name: "createdAt", title: "작성일시", type: "text", width: 100 },
+                { type: "control" }
+            ]
+        });
+    });
+</script>
 </body>
 </html>
