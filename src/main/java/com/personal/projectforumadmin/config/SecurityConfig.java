@@ -17,6 +17,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authz) -> authz.anyRequest().permitAll())
                 .formLogin(withDefaults())
                 .logout(logout -> logout.logoutSuccessUrl("/"))
+                .oauth2Login(withDefaults())
                 .build();
     }
 }
