@@ -6,6 +6,7 @@ logging:
     com.personal.projectforumadmin: debug
     org.springframework.web.servlet: debug
     org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.springframework.web.client.RestTemplate: debug
     #org.hibernate: debug
 
 server.port: 8081
@@ -48,6 +49,7 @@ spring:
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user-name-attribute: id
 
+project.forum.url: http://localhost:8080
 ---
 
 spring:
