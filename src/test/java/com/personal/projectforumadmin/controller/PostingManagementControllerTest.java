@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@DisplayName(("View Controller - Posting Management"))
+@DisplayName(("Controller - Posting Management"))
 @Import(SecurityConfig.class)
 @WebMvcTest(PostingManagementController.class)
 class PostingManagementControllerTest {
