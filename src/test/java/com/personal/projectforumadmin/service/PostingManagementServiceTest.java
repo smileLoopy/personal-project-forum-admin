@@ -48,7 +48,7 @@ class PostingManagementServiceTest {
 
         @DisplayName("Retrieve posting API, return posting")
         @Test
-        void given_when_then() {
+        void givenNothing_whenCallingPostingApi_thenReturnsPostingList() {
             // Given
 
             // When
