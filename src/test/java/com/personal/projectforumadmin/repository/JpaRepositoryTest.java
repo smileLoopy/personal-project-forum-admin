@@ -29,7 +29,7 @@ class JpaRepositoryTest {
         this.adminAccountRepository = adminAccountRepository;
     }
 
-    @DisplayName("User Information Select Test")
+    @DisplayName("User Account Information Select Test")
     @Test
     void givenAdminAccounts_whenSelecting_thenWorksFine() {
         // Given
@@ -43,7 +43,7 @@ class JpaRepositoryTest {
                 .hasSize(4);
     }
 
-    @DisplayName("User Information Insert Test")
+    @DisplayName("User Account Information Insert Test")
     @Test
     void givenAdminAccounts_whenInserting_thenWorksFine() {
         // Given
@@ -57,7 +57,7 @@ class JpaRepositoryTest {
         assertThat(adminAccountRepository.count()).isEqualTo(previousCount + 1);
     }
 
-    @DisplayName("User Information Update Test")
+    @DisplayName("User Account Information Update Test")
     @Test
     void givenAdminAccountAndRoleType_whenUpdating_thenWorksFine() {
         // Given
@@ -75,7 +75,7 @@ class JpaRepositoryTest {
                 .hasFieldOrPropertyWithValue("roleTypes", Set.of(RoleType.USER, RoleType.DEVELOPER));
     }
 
-    @DisplayName("User Information Delete Test")
+    @DisplayName("User Account Information Delete Test")
     @Test
     void givenAdminAccount_whenDeleting_thenWorksFine() {
         // Given

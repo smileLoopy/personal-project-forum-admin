@@ -1,7 +1,6 @@
 package com.personal.projectforumadmin.controller;
 
 import com.personal.projectforumadmin.config.SecurityConfig;
-import com.personal.projectforumadmin.domain.constant.RoleType;
 import com.personal.projectforumadmin.dto.PostingCommentDto;
 import com.personal.projectforumadmin.dto.UserAccountDto;
 import com.personal.projectforumadmin.service.PostingCommentManagementService;
@@ -16,7 +15,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 import static org.mockito.BDDMockito.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
@@ -106,7 +104,6 @@ class PostingCommentManagementControllerTest {
     private UserAccountDto createUserAccountDto() {
         return UserAccountDto.of(
                 "eunahTest",
-                Set.of(RoleType.ADMIN),
                 "eunah-test@email.com",
                 "eunah-test",
                 "test memo"
