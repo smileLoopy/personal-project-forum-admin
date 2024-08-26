@@ -173,8 +173,6 @@ class PostingCommentManagementServiceTest {
     private UserAccountDto createUserAccountDto() {
         return UserAccountDto.of(
                 "eunahTest",
-                "pw",
-                Set.of(RoleType.ADMIN),
                 "eunah-test@email.com",
                 "eunah-test",
                 "test memo"
