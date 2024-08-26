@@ -1,6 +1,7 @@
 package com.personal.projectforumadmin.controller;
 
 import com.personal.projectforumadmin.config.SecurityConfig;
+import com.personal.projectforumadmin.config.TestSecurityConfig;
 import com.personal.projectforumadmin.dto.PostingCommentDto;
 import com.personal.projectforumadmin.dto.UserAccountDto;
 import com.personal.projectforumadmin.service.PostingCommentManagementService;
@@ -23,7 +24,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @DisplayName("Controller - Comment Management")
-@Import(SecurityConfig.class)
+@Import(TestSecurityConfig.class)
 @WebMvcTest(PostingCommentManagementController.class)
 class PostingCommentManagementControllerTest {
 

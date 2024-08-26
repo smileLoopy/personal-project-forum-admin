@@ -1,6 +1,7 @@
 package com.personal.projectforumadmin.controller;
 
 import com.personal.projectforumadmin.config.SecurityConfig;
+import com.personal.projectforumadmin.config.TestSecurityConfig;
 import com.personal.projectforumadmin.dto.UserAccountDto;
 import com.personal.projectforumadmin.service.UserAccountManagementService;
 import org.junit.jupiter.api.DisplayName;
@@ -21,7 +22,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @DisplayName("Controller - User Account Management")
-@Import(SecurityConfig.class)
+@Import(TestSecurityConfig.class)
 @WebMvcTest(UserAccountManagementController.class)
 class UserAccountManagementControllerTest {
 
