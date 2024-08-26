@@ -1,7 +1,7 @@
 package com.personal.projectforumadmin.dto.security;
 
 import com.personal.projectforumadmin.domain.constant.RoleType;
-import com.personal.projectforumadmin.dto.UserAccountDto;
+import com.personal.projectforumadmin.dto.AdminAccountDto;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -42,7 +42,7 @@ public record ForumAdminPrincipal(
         );
     }
 
-    public static ForumAdminPrincipal from(UserAccountDto dto) {
+    public static ForumAdminPrincipal from(AdminAccountDto dto) {
         return ForumAdminPrincipal.of(
                 dto.userId(),
                 dto.userPassword(),
@@ -53,8 +53,8 @@ public record ForumAdminPrincipal(
         );
     }
 
-    public UserAccountDto toDto() {
-        return UserAccountDto.of(
+    public AdminAccountDto toDto() {
+        return AdminAccountDto.of(
                 username,
                 password,
                 authorities.stream()
