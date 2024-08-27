@@ -77,6 +77,7 @@ class PostingManagementServiceTest {
 
         private final ObjectMapper mapper;
 
+        @Autowired
         public RestTemplateTest(
                 PostingManagementService sut, ProjectProperties projectProperties, MockRestServiceServer server, ObjectMapper mapper
         ) {
