@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
@@ -36,6 +37,7 @@ class PostingManagementControllerTest {
         this.mvc = mvc;
     }
 
+    @WithMockUser(username = "tester", roles = "USER")
     @DisplayName("[view][GET] Posting Management Page - Normal  Retrieval")
     @Test
     void givenNothing_whenRequestingPostingManagementView_thenReturnsPostingManagementView() throws Exception {
@@ -50,7 +52,7 @@ class PostingManagementControllerTest {
         then(postingManagementService).should().getPostings();;
     }
 
-
+    @WithMockUser(username = "tester", roles = "USER")
     @DisplayName("[data][GET] one posting - normal retrieval")
     @Test
     void givenPostingId_whenRequestingPosting_thenReturnsPosting() throws Exception {
@@ -70,6 +72,7 @@ class PostingManagementControllerTest {
         then(postingManagementService).should().getPosting(postingId);
     }
 
+    @WithMockUser(username = "tester", roles = "MANAGER")
     @DisplayName("[view][POST] delete posting - normal retrieval")
     @Test
     void givenPostingId_whenRequestingDeletion_thenRedirectsToPostingManagementView() throws Exception {
