@@ -2,7 +2,6 @@ package com.personal.projectforumadmin.dto.security;
 
 import com.personal.projectforumadmin.domain.constant.RoleType;
 import com.personal.projectforumadmin.dto.AdminAccountDto;
-import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

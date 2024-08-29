@@ -1,6 +1,5 @@
 package com.personal.projectforumadmin.controller;
 
-import com.personal.projectforumadmin.config.SecurityConfig;
 import com.personal.projectforumadmin.config.TestSecurityConfig;
 import com.personal.projectforumadmin.dto.PostingDto;
 import com.personal.projectforumadmin.dto.UserAccountDto;

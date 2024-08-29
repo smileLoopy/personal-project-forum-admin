@@ -1,7 +1,6 @@
 package com.personal.projectforumadmin.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.personal.projectforumadmin.domain.constant.RoleType;
 import com.personal.projectforumadmin.dto.PostingCommentDto;
 import com.personal.projectforumadmin.dto.UserAccountDto;
 import com.personal.projectforumadmin.dto.properties.ProjectProperties;
@@ -22,10 +21,8 @@ import org.springframework.test.web.client.MockRestServiceServer;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;

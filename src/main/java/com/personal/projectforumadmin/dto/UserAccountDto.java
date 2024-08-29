@@ -1,10 +1,6 @@
 package com.personal.projectforumadmin.dto;
 
-import com.personal.projectforumadmin.domain.AdminAccount;
-import com.personal.projectforumadmin.domain.constant.RoleType;
-
 import java.time.LocalDateTime;
-import java.util.Set;
 
 public record UserAccountDto(
         String userId,
