@@ -12,7 +12,6 @@ import java.time.ZonedDateTime;
 import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("DTO - Kakao OAuth 2.0 authentication response data test")
 class KakaoOAuth2ResponseTest {
