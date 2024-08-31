@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <thlogic>
+    <attr sel=".modal-body/pre" th:style="'white-space: pre-line'" />
     <!--/* Actual url injection must be done dynamically by javascript. th:action is used to automatically set the csrf token on the form*/-->
     <attr sel=".modal-footer/form" th:action="@{#}" th:method="post" />
 </thlogic>
