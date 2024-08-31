@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
@@ -35,6 +36,7 @@ class PostingCommentManagementControllerTest {
         this.mvc = mvc;
     }
 
+    @WithMockUser(username = "tester", roles = "USER")
     @DisplayName("[view][GET] Comment Management Page - Normal Retrieval")
     @Test
     void givenNothing_whenRequestingPostingCommentManagementView_thenReturnsPostingCommentManagementView() throws Exception {
@@ -50,6 +52,7 @@ class PostingCommentManagementControllerTest {
         then(postingCommentManagementService).should().getPostingComments();
     }
 
+    @WithMockUser(username = "tester", roles = "USER")
     @DisplayName("[data][GET] Single Comment - Normal Retrieval")
     @Test
     void givenCommentId_whenRequestingPostingComment_thenReturnsPostingComment() throws Exception {
@@ -68,6 +71,7 @@ class PostingCommentManagementControllerTest {
         then(postingCommentManagementService).should().getPostingComment(postingCommentId);
     }
 
+    @WithMockUser(username = "tester", roles = "MANAGER")
     @DisplayName("[view][POST] Delete Comment - Normal Retrieval")
     @Test
     void givenCommentId_whenRequestingDeletion_thenRedirectsToPostingCommentManagementView() throws Exception {
