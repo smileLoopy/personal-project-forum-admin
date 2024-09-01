@@ -7,4 +7,51 @@
     <attr sel="#layout-right-aside" th:replace="layouts/layout-right-aside :: aside" />
     <attr sel="#layout-footer" th:replace="layouts/layout-footer :: footer" />
     <attr sel="#layout-scripts" th:replace="layouts/layout-scripts :: script" />
+
+    <attr sel="#jsgrid-javascript" th:utext='|
+    $(() => {
+      const csrfHeader = "${_csrf.headerName}";
+      const csrfToken = "${_csrf.token}";
+      $("#jsgrid-admin-members").jsGrid({
+        width: "100%",
+        autoload: true,
+        inserting: false,
+        editing: false,
+        sorting: true,
+        paging: false,
+        confirmDeleting: true,
+        deleteConfirm: "Are you sure you want to delete the admin account?",
+        fields: [
+          { name: "userId", title: "USER ID", type: "text", width: 70 },
+          { name: "nickname", title: "NICKNAME", type: "text", width: 60 },
+          { name: "email", title: "EMAIL", type: "text", width: 120 },
+          { name: "memo", title: "MEMO", type: "text", width: 150 },
+          { name: "roleTypes", title: "ROLE", type: "text", width: 100 },
+          { name: "createdBy", title: "CREATEDBY", type: "text", width: 60 },
+          { name: "createdAt", title: "CREATEDAT", type: "text", width: 100 },
+          { type: "control" }
+        ],
+        controller: {
+          loadData: (filter) => {
+            return $.ajax({
+              type: "GET",
+              url: "/api/admin/members",
+              data: filter,
+              dataType: "json"
+            });
+          },
+          insertItem: $.noop,
+          updateItem: $.noop,
+          deleteItem: (item) => {
+            return $.ajax({
+              type: "DELETE",
+              url: "/api/admin/members/" + item.userId,
+              data: item,
+              beforeSend: (xhr) => xhr.setRequestHeader(csrfHeader, csrfToken)
+            });
+          },
+        }
+      });
+    });
+  |'/>
 </thlogic>
