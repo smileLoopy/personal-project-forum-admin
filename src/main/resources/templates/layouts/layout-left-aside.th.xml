@@ -24,4 +24,5 @@
           th:href="@{/admin/members}"
           th:classappend="${isMembers} ? 'active'"
   />
+  <attr sel="#visit-count" th:text="${visitCount}" />
 </thlogic>
