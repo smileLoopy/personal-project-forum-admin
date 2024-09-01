@@ -116,7 +116,7 @@ class PostingCommentManagementServiceTest {
             Long postingCommentId = 1L;
             PostingCommentDto expectedComment = createPostingCommentDto("comment");
             server
-                    .expect(requestTo(projectProperties.forum().url() + "/api/postingComments/" + postingCommentId))
+                    .expect(requestTo(projectProperties.forum().url() + "/api/postingComments/" + postingCommentId + "?projection=withUserAccount"))
                     .andRespond(withSuccess(
                             mapper.writeValueAsString(expectedComment),
                             MediaType.APPLICATION_JSON
