@@ -116,7 +116,7 @@ class PostingManagementServiceTest {
             Long postingId = 1L;
             PostingDto expectedPosting = createPostingDto("title", "content");
             server
-                    .expect(requestTo(projectProperties.forum().url() + "/api/postings/" + postingId))
+                    .expect(requestTo(projectProperties.forum().url() + "/api/postings/" + postingId + "?projection=withUserAccount"))
                     .andRespond(withSuccess(
                             mapper.writeValueAsString(expectedPosting),
                             MediaType.APPLICATION_JSON

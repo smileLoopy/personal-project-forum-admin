@@ -35,6 +35,7 @@ public class PostingCommentManagementService {
     public PostingCommentDto getPostingComment(Long postingCommentId) {
 
         URI uri = UriComponentsBuilder.fromHttpUrl(projectProperties.forum().url() + "/api/postingComments/" + postingCommentId)
+                .queryParam("projection", "withUserAccount")
                 .build()
                 .toUri();
         PostingCommentDto response = restTemplate.getForObject(uri, PostingCommentDto.class);

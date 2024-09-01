@@ -33,6 +33,7 @@ public class PostingManagementService {
 
     public PostingDto getPosting(Long postingId) {
         URI uri = UriComponentsBuilder.fromHttpUrl(projectProperties.forum().url() + "/api/postings/" + postingId)
+                .queryParam("projection", "withUserAccount")
                 .build()
                 .toUri();
         PostingDto response = restTemplate.getForObject(uri, PostingDto.class);
