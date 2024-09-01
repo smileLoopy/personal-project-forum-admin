@@ -1,38 +1,100 @@
 package com.personal.projectforumadmin.controller;
 
-import com.personal.projectforumadmin.config.SecurityConfig;
+import com.personal.projectforumadmin.config.TestSecurityConfig;
+import com.personal.projectforumadmin.dto.UserAccountDto;
+import com.personal.projectforumadmin.service.UserAccountManagementService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
+
+import static org.mockito.BDDMockito.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@DisplayName("View 컨트롤러 - 회원 관리")
-@Import(SecurityConfig.class)
+@DisplayName("Controller - User Account Management")
+@Import(TestSecurityConfig.class)
 @WebMvcTest(UserAccountManagementController.class)
 class UserAccountManagementControllerTest {
 
     private final MockMvc mvc;
 
+    @MockBean private UserAccountManagementService userAccountManagementService;
+
     public UserAccountManagementControllerTest(@Autowired MockMvc mvc) {
         this.mvc = mvc;
     }
 
+    @WithMockUser(username = "tester", roles = "USER")
     @DisplayName("[view][GET] User Management Page - Normal Retrieval")
     @Test
     void givenNothing_whenRequestingUserAccountManagementView_thenReturnsUserAccountManagementView() throws Exception {
         // Given
+        given(userAccountManagementService.getUserAccounts()).willReturn(List.of());
 
         // When & Then
         mvc.perform(get("/management/user-accounts"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
-                .andExpect(view().name("management/user-accounts"));
+                .andExpect(view().name("management/user-accounts"))
+                .andExpect(model().attribute("userAccounts", List.of()));
+        then(userAccountManagementService).should().getUserAccounts();;
+    }
+
+    @WithMockUser(username = "tester", roles = "USER")
+    @DisplayName("[data][GET] Single User Account  - Normal Retrieval")
+    @Test
+    void givenUserAccountId_whenRequestingUserAccount_thenReturnsUserAccount() throws Exception {
+        // Given
+        String userId = "eunah";
+        UserAccountDto userAccountDto = createUserAccountDto(userId, "Eunah");
+        given(userAccountManagementService.getUserAccount(userId)).willReturn(userAccountDto);
+
+        // When & Then
+        mvc.perform(get("/management/user-accounts/" + userId))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.userId").value(userId))
+                .andExpect(jsonPath("$.nickname").value(userAccountDto.nickname()));
+        then(userAccountManagementService).should().getUserAccount(userId);
+    }
+
+    @WithMockUser(username = "tester", roles = "MANAGER")
+    @DisplayName("[view][POST] Delete User Account - Normal Retrieval")
+    @Test
+    void givenUserAccountId_whenRequestingDeletion_thenRedirectsToUserAccountManagementView() throws Exception {
+        // Given
+        String userId = "eunah";
+        willDoNothing().given(userAccountManagementService).deleteUserAccount(userId);
+
+        // When & Then
+        mvc.perform(
+                        post("/management/user-accounts/" + userId)
+                                .with(csrf())
+                )
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/management/user-accounts"))
+                .andExpect(redirectedUrl("/management/user-accounts"));
+        then(userAccountManagementService).should().deleteUserAccount(userId);
+    }
+
+
+    private UserAccountDto createUserAccountDto(String userId, String nickname) {
+        return UserAccountDto.of(
+                userId,
+                "eunah-test@email.com",
+                nickname,
+                "test memo"
+        );
     }
 
 }

@@ -1,6 +1,6 @@
 -- test account
 -- TODO: password is exposed. need to think of how to improve it
-INSERT INTO user_account
+INSERT INTO admin_account
 (user_id, user_password, role_types, nickname, email, memo, created_at, created_by, modified_at, modified_by)
 VALUES
     ('eunah', '{noop}1234', 'ADMIN', 'Eunah', 'eunah@mail.com', 'I am Eunah.', now(), 'eunah', now(), 'eunah'),
