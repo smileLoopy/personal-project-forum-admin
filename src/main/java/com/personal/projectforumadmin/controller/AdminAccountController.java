@@ -2,7 +2,9 @@ package com.personal.projectforumadmin.controller;
 
 
 import com.personal.projectforumadmin.dto.response.AdminAccountResponse;
+import com.personal.projectforumadmin.service.AdminAccountService;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,11 +12,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/admin/members")
+@RequiredArgsConstructor
 @Controller
 public class AdminAccountController {
 
-    @GetMapping
+    private final AdminAccountService adminAccountService;
+
+    @GetMapping("/admin/members")
     public String members(
             HttpServletRequest request,
             Model model
@@ -27,12 +31,15 @@ public class AdminAccountController {
     @ResponseBody
     @GetMapping("/api/admin/members")
     public List<AdminAccountResponse> getMembers() {
-        return List.of();
+        return adminAccountService.users().stream()
+                .map(AdminAccountResponse::from)
+                .toList();
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @ResponseBody
     @DeleteMapping("/api/admin/members/{userId}")
     public void delete(@PathVariable String userId) {
+        adminAccountService.deleteUser(userId);
     }
 }
