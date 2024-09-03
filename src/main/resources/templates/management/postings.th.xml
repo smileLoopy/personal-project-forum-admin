@@ -12,9 +12,9 @@
   <attr sel="#main-table">
     <attr sel="thead/tr">
       <attr sel="th[0]" th:text="'ID'" />
-      <attr sel="th[1]" th:text="'제목'" />
-      <attr sel="th[2]" th:text="'작성자'" />
-      <attr sel="th[3]" th:text="'작성일시'" />
+      <attr sel="th[1]" th:text="'TITLE'" />
+      <attr sel="th[2]" th:text="'CREATEDBY'" />
+      <attr sel="th[3]" th:text="'CREATEDAT'" />
     </attr>
 
     <attr sel="tbody" th:remove="all-but-first">

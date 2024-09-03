@@ -12,12 +12,12 @@
 
     <attr sel="#main-table">
         <attr sel="thead/tr">
-            <attr sel="th[0]" th:text="'유저 ID'" />
-            <attr sel="th[1]" th:text="'닉네임'" />
-            <attr sel="th[2]" th:text="'이메일'" />
-            <attr sel="th[3]" th:text="'메모'" />
-            <attr sel="th[4]" th:text="'작성자'" />
-            <attr sel="th[5]" th:text="'작성일시'" />
+            <attr sel="th[0]" th:text="'USER ID'" />
+            <attr sel="th[1]" th:text="'NICKNAME'" />
+            <attr sel="th[2]" th:text="'EMAIL" />
+            <attr sel="th[3]" th:text="'MEMO" />
+            <attr sel="th[4]" th:text="'CREATEDBY'" />
+            <attr sel="th[5]" th:text="'CREATEDAT" />
         </attr>
 
         <attr sel="tbody" th:remove="all-but-first">

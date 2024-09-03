@@ -12,9 +12,9 @@
     <attr sel="#main-table">
         <attr sel="thead/tr">
             <attr sel="th[0]" th:text="'ID'" />
-            <attr sel="th[1]" th:text="'Comment Content'" />
-            <attr sel="th[2]" th:text="'CreatedBy'" />
-            <attr sel="th[3]" th:text="'CreatedAt'" />
+            <attr sel="th[1]" th:text="'CONTENT" />
+            <attr sel="th[2]" th:text="'CREATEDBY'" />
+            <attr sel="th[3]" th:text="'CREATEDAT" />
         </attr>
 
         <attr sel="tbody" th:remove="all-but-first">
