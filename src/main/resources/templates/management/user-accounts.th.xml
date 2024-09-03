@@ -17,7 +17,7 @@
             <attr sel="th[2]" th:text="'EMAIL" />
             <attr sel="th[3]" th:text="'MEMO" />
             <attr sel="th[4]" th:text="'CREATEDBY'" />
-            <attr sel="th[5]" th:text="'CREATEDAT" />
+            <attr sel="th[5]" th:text="'CREATEDAT'" />
         </attr>
 
         <attr sel="tbody" th:remove="all-but-first">

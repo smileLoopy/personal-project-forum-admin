@@ -14,7 +14,7 @@
             <attr sel="th[0]" th:text="'ID'" />
             <attr sel="th[1]" th:text="'CONTENT" />
             <attr sel="th[2]" th:text="'CREATEDBY'" />
-            <attr sel="th[3]" th:text="'CREATEDAT" />
+            <attr sel="th[3]" th:text="'CREATEDAT'" />
         </attr>
 
         <attr sel="tbody" th:remove="all-but-first">
