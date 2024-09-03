@@ -14,8 +14,8 @@
         <attr sel="thead/tr">
             <attr sel="th[0]" th:text="'USER ID'" />
             <attr sel="th[1]" th:text="'NICKNAME'" />
-            <attr sel="th[2]" th:text="'EMAIL" />
-            <attr sel="th[3]" th:text="'MEMO" />
+            <attr sel="th[2]" th:text="'EMAIL'" />
+            <attr sel="th[3]" th:text="'MEMO'" />
             <attr sel="th[4]" th:text="'CREATEDBY'" />
             <attr sel="th[5]" th:text="'CREATEDAT'" />
         </attr>
