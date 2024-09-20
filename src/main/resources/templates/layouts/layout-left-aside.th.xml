@@ -18,6 +18,10 @@
           th:href="@{/management/user-accounts}"
           th:classappend="${isUserAccounts} ? 'active'"
   />
+  <attr
+          sel="#tip-calculator"
+          th:href="@{/management/tip}"
+  />
   <attr sel="#admin-category" th:classappend="${isAdmin} ? 'active'" />
   <attr
           sel="#admin-members"
