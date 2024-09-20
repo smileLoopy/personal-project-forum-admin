@@ -35,7 +35,7 @@
         }
         td {
             vertical-align: middle;
-            padding: 10px;
+            padding: 5px; /* Reduced padding for mobile */
         }
         .section-title {
             font-weight: bold;
@@ -43,74 +43,86 @@
             margin-top: 20px;
             color: #333;
         }
+        /* Responsive adjustments */
+        @media (max-width: 576px) {
+            .result, .resultRed {
+                font-size: 1rem; /* Adjust font size for mobile */
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1 class="text-center">Tip Calculator</h1>
-    <table class="table table-bordered">
-        <tbody>
-        <tr>
-            <td>Card</td>
-            <td><input type="number" class="form-control" id="card" oninput="calculateTotal()"></td>
-            <td>Cash</td>
-            <td><input type="number" class="form-control" id="cash" oninput="calculateTotal()"></td>
-            <td>Total</td>
-            <td><span class="result" id="totalResult">0.00</span></td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tbody>
+            <tr>
+                <td>Card</td>
+                <td><input type="number" class="form-control" id="card" oninput="calculateTotal()"></td>
+                <td>Cash</td>
+                <td><input type="number" class="form-control" id="cash" oninput="calculateTotal()"></td>
+                <td>Total</td>
+                <td><span class="result" id="totalResult">0.00</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
     <div class="section-title">홀 (Server)</div>
-    <table class="table table-bordered">
-        <tbody>
-        <tr>
-            <td colspan="5">총 수익: <span class="resultRed" id="serverResult">0.00</span> / 총시간: <span class="result" id="serverTimeResult">0.00</span> = 시간당금액: <span class="result" id="serverHourlyRate">0.00</span></td>
-        </tr>
-        <tr>
-            <td><input type="text" class="form-control" placeholder="이름" pattern="[A-Za-z가-힣]+" title="이름은 문자만 입력해주세요" required></td>
-            <td><input type="number" class="form-control" id="serverTime1" placeholder="시간" oninput="calculateTotal()"></td>
-            <td><span class="result" id="serverTimeMultiplyMoney1">0.00</span></td>
-            <td><input type="text" class="form-control" placeholder="이름" pattern="[A-Za-z가-힣]+" title="이름은 문자만 입력해주세요" required></td>
-            <td><input type="number" class="form-control" id="serverTime2" placeholder="시간" oninput="calculateTotal()"></td>
-            <td><span class="result" id="serverTimeMultiplyMoney2">0.00</span></td>
-        </tr>
-        <tr>
-            <td><input type="text" class="form-control" placeholder="이름" pattern="[A-Za-z가-힣]+" title="이름은 문자만 입력해주세요" required></td>
-            <td><input type="number" class="form-control" id="serverTime3" placeholder="시간" oninput="calculateTotal()"></td>
-            <td><span class="result" id="serverTimeMultiplyMoney3">0.00</span></td>
-            <td><input type="text" class="form-control" placeholder="이름" pattern="[A-Za-z가-힣]+" title="이름은 문자만 입력해주세요" required></td>
-            <td><input type="number" class="form-control" id="serverTime4" placeholder="시간" oninput="calculateTotal()"></td>
-            <td><span class="result" id="serverTimeMultiplyMoney4">0.00</span></td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tbody>
+            <tr>
+                <td colspan="5">총 수익: <span class="resultRed" id="serverResult">0.00</span> / 총시간: <span class="result" id="serverTimeResult">0.00</span> = 시간당금액: <span class="result" id="serverHourlyRate">0.00</span></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="form-control" placeholder="이름" required></td>
+                <td><input type="number" class="form-control" id="serverTime1" placeholder="시간" oninput="calculateTotal()"></td>
+                <td><span class="result" id="serverTimeMultiplyMoney1">0.00</span></td>
+                <td><input type="text" class="form-control" placeholder="이름" required></td>
+                <td><input type="number" class="form-control" id="serverTime2" placeholder="시간" oninput="calculateTotal()"></td>
+                <td><span class="result" id="serverTimeMultiplyMoney2">0.00</span></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="form-control" placeholder="이름" required></td>
+                <td><input type="number" class="form-control" id="serverTime3" placeholder="시간" oninput="calculateTotal()"></td>
+                <td><span class="result" id="serverTimeMultiplyMoney3">0.00</span></td>
+                <td><input type="text" class="form-control" placeholder="이름" required></td>
+                <td><input type="number" class="form-control" id="serverTime4" placeholder="시간" oninput="calculateTotal()"></td>
+                <td><span class="result" id="serverTimeMultiplyMoney4">0.00</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
     <div class="section-title">주방 (Kitchen)</div>
-    <table class="table table-bordered">
-        <tbody>
-        <tr>
-            <td colspan="5">총 수익: <span class="resultRed" id="kitchenResult">0.00</span> / 총시간: <span class="result" id="kitchenTimeResult">0.00</span> = 시간당금액: <span class="result" id="kitchenHourlyRate">0.00</span></td>
-        </tr>
-        <tr>
-            <td><input type="text" class="form-control" placeholder="이름" pattern="[A-Za-z가-힣]+" title="이름은 문자만 입력해주세요" required></td>
-            <td><input type="number" class="form-control" id="kitchenTime1" placeholder="시간" oninput="calculateTotal()"></td>
-            <td><span class="result" id="kitchenTimeMultiplyMoney1">0.00</span></td>
-            <td><input type="text" class="form-control" placeholder="이름" pattern="[A-Za-z가-힣]+" title="이름은 문자만 입력해주세요" required></td>
-            <td><input type="number" class="form-control" id="kitchenTime2" placeholder="시간" oninput="calculateTotal()"></td>
-            <td><span class="result" id="kitchenTimeMultiplyMoney2">0.00</span></td>
-        </tr>
-        <tr>
-            <td><input type="text" class="form-control" placeholder="이름" pattern="[A-Za-z가-힣]+" title="이름은 문자만 입력해주세요" required></td>
-            <td><input type="number" class="form-control" id="kitchenTime3" placeholder="시간" oninput="calculateTotal()"></td>
-            <td><span class="result" id="kitchenTimeMultiplyMoney3">0.00</span></td>
-            <td><input type="text" class="form-control" placeholder="이름" pattern="[A-Za-z가-힣]+" title="이름은 문자만 입력해주세요" required></td>
-            <td><input type="number" class="form-control" id="kitchenTime4" placeholder="시간" oninput="calculateTotal()"></td>
-            <td><span class="result" id="kitchenTimeMultiplyMoney4">0.00</span></td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tbody>
+            <tr>
+                <td colspan="5">총 수익: <span class="resultRed" id="kitchenResult">0.00</span> / 총시간: <span class="result" id="kitchenTimeResult">0.00</span> = 시간당금액: <span class="result" id="kitchenHourlyRate">0.00</span></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="form-control" placeholder="이름" required></td>
+                <td><input type="number" class="form-control" id="kitchenTime1" placeholder="시간" oninput="calculateTotal()"></td>
+                <td><span class="result" id="kitchenTimeMultiplyMoney1">0.00</span></td>
+                <td><input type="text" class="form-control" placeholder="이름" required></td>
+                <td><input type="number" class="form-control" id="kitchenTime2" placeholder="시간" oninput="calculateTotal()"></td>
+                <td><span class="result" id="kitchenTimeMultiplyMoney2">0.00</span></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="form-control" placeholder="이름" required></td>
+                <td><input type="number" class="form-control" id="kitchenTime3" placeholder="시간" oninput="calculateTotal()"></td>
+                <td><span class="result" id="kitchenTimeMultiplyMoney3">0.00</span></td>
+                <td><input type="text" class="form-control" placeholder="이름" required></td>
+                <td><input type="number" class="form-control" id="kitchenTime4" placeholder="시간" oninput="calculateTotal()"></td>
+                <td><span class="result" id="kitchenTimeMultiplyMoney4">0.00</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <script>
@@ -163,7 +175,6 @@
         document.getElementById("kitchenTimeMultiplyMoney3").innerText = roundDownToTwoDecimals(kitchenTime3 * kitchenHourlyRate).toFixed(2);
         document.getElementById("kitchenTimeMultiplyMoney4").innerText = roundDownToTwoDecimals(kitchenTime4 * kitchenHourlyRate).toFixed(2);
     }
-
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
