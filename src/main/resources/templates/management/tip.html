@@ -126,8 +126,12 @@
 </div>
 
 <script>
-    function roundDownToTwoDecimals(value) {
+    function floorDownToTwoDecimals(value) {
         return Math.floor(value * 100) / 100;
+    }
+
+    function roundToTwoDecimals(value) {
+        return Math.round(value * 100) / 100;
     }
 
     function calculateTotal() {
@@ -150,30 +154,30 @@
         const serverTotalTime = serverTime1 + serverTime2 + serverTime3 + serverTime4;
         const kitchenTotalTime = kitchenTime1 + kitchenTime2 + kitchenTime3 + kitchenTime4;
 
-        document.getElementById("serverResult").innerText = roundDownToTwoDecimals(serverTotal).toFixed(2);
-        document.getElementById("kitchenResult").innerText = roundDownToTwoDecimals(kitchenTotal).toFixed(2);
-        document.getElementById("totalResult").innerText = roundDownToTwoDecimals(total).toFixed(2);
-        document.getElementById("serverTimeResult").innerText = roundDownToTwoDecimals(serverTotalTime).toFixed(2);
-        document.getElementById("kitchenTimeResult").innerText = roundDownToTwoDecimals(kitchenTotalTime).toFixed(2);
+        document.getElementById("serverResult").innerText = roundToTwoDecimals(serverTotal).toFixed(2);
+        document.getElementById("kitchenResult").innerText = roundToTwoDecimals(kitchenTotal).toFixed(2);
+        document.getElementById("totalResult").innerText = roundToTwoDecimals(total).toFixed(2);
+        document.getElementById("serverTimeResult").innerText = serverTotalTime;
+        document.getElementById("kitchenTimeResult").innerText = kitchenTotalTime;
 
         // Calculate hourly rates
-        const serverHourlyRate = serverTotalTime > 0 ? roundDownToTwoDecimals(serverTotal / serverTotalTime) : 0;
-        const kitchenHourlyRate = kitchenTotalTime > 0 ? roundDownToTwoDecimals(kitchenTotal / kitchenTotalTime) : 0;
+        const serverHourlyRate = serverTotalTime > 0 ? roundToTwoDecimals(serverTotal / serverTotalTime) : 0;
+        const kitchenHourlyRate = kitchenTotalTime > 0 ? roundToTwoDecimals(kitchenTotal / kitchenTotalTime) : 0;
 
         document.getElementById("serverHourlyRate").innerText = serverHourlyRate.toFixed(2);
         document.getElementById("kitchenHourlyRate").innerText = kitchenHourlyRate.toFixed(2);
 
         // Update individual server time earnings
-        document.getElementById("serverTimeMultiplyMoney1").innerText = roundDownToTwoDecimals(serverTime1 * serverHourlyRate).toFixed(2);
-        document.getElementById("serverTimeMultiplyMoney2").innerText = roundDownToTwoDecimals(serverTime2 * serverHourlyRate).toFixed(2);
-        document.getElementById("serverTimeMultiplyMoney3").innerText = roundDownToTwoDecimals(serverTime3 * serverHourlyRate).toFixed(2);
-        document.getElementById("serverTimeMultiplyMoney4").innerText = roundDownToTwoDecimals(serverTime4 * serverHourlyRate).toFixed(2);
+        document.getElementById("serverTimeMultiplyMoney1").innerText = floorDownToTwoDecimals(serverTime1 * serverHourlyRate).toFixed(2);
+        document.getElementById("serverTimeMultiplyMoney2").innerText = floorDownToTwoDecimals(serverTime2 * serverHourlyRate).toFixed(2);
+        document.getElementById("serverTimeMultiplyMoney3").innerText = floorDownToTwoDecimals(serverTime3 * serverHourlyRate).toFixed(2);
+        document.getElementById("serverTimeMultiplyMoney4").innerText = floorDownToTwoDecimals(serverTime4 * serverHourlyRate).toFixed(2);
 
         // Update individual kitchen time earnings
-        document.getElementById("kitchenTimeMultiplyMoney1").innerText = roundDownToTwoDecimals(kitchenTime1 * kitchenHourlyRate).toFixed(2);
-        document.getElementById("kitchenTimeMultiplyMoney2").innerText = roundDownToTwoDecimals(kitchenTime2 * kitchenHourlyRate).toFixed(2);
-        document.getElementById("kitchenTimeMultiplyMoney3").innerText = roundDownToTwoDecimals(kitchenTime3 * kitchenHourlyRate).toFixed(2);
-        document.getElementById("kitchenTimeMultiplyMoney4").innerText = roundDownToTwoDecimals(kitchenTime4 * kitchenHourlyRate).toFixed(2);
+        document.getElementById("kitchenTimeMultiplyMoney1").innerText = floorDownToTwoDecimals(kitchenTime1 * kitchenHourlyRate).toFixed(2);
+        document.getElementById("kitchenTimeMultiplyMoney2").innerText = floorDownToTwoDecimals(kitchenTime2 * kitchenHourlyRate).toFixed(2);
+        document.getElementById("kitchenTimeMultiplyMoney3").innerText = floorDownToTwoDecimals(kitchenTime3 * kitchenHourlyRate).toFixed(2);
+        document.getElementById("kitchenTimeMultiplyMoney4").innerText = floorDownToTwoDecimals(kitchenTime4 * kitchenHourlyRate).toFixed(2);
     }
 </script>
 
